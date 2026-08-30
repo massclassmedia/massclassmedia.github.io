@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Authorization complete — MassClassMedia</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { max-width: 40rem; margin: 0 auto; padding: 4rem 1.25rem;
+         font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         text-align: center; }
+  h1 { font-size: 1.5rem; }
+  code { display: block; word-break: break-all; padding: 1rem; margin: 1.5rem 0;
+         background: rgba(128,128,128,.15); border-radius: .5rem; font-size: .95rem; }
+  .hint { opacity: .75; font-size: .95rem; }
+</style>
+</head>
+<body>
+
+<h1 id="head">Finishing up&hellip;</h1>
+<p id="msg" class="hint">Handing your authorization back to the app on your computer.</p>
+<div id="manual" hidden>
+  <p class="hint">If nothing happened, copy this code and paste it into the terminal:</p>
+  <code id="code"></code>
+</div>
+
+<script>
+// TikTok refuses to send users straight back to 127.0.0.1, so it sends
+// them here instead — a plain https page that immediately forwards the
+// same query string to the consent script listening on this machine.
+// A top-level navigation to http://127.0.0.1 is permitted from https;
+// only sub-resources would be blocked as mixed content.
+(function () {
+  var q = window.location.search || "";
+  var params = new URLSearchParams(q);
+  var code = params.get("code");
+  var err = params.get("error");
+
+  if (err) {
+    document.getElementById("head").textContent = "Authorization was declined";
+    document.getElementById("msg").textContent = err;
+    return;
+  }
+  if (!code) {
+    document.getElementById("head").textContent = "No code came back";
+    document.getElementById("msg").textContent =
+      "Close this tab and run the consent script again.";
+    return;
+  }
+
+  document.getElementById("code").textContent = code;
+
+  // Fire the hand-off. If the local script isn't listening the browser
+  // just shows its own error, so reveal the manual fallback first.
+  setTimeout(function () {
+    document.getElementById("head").textContent = "Authorized";
+    document.getElementById("msg").textContent =
+      "You can close this tab and return to the terminal.";
+    document.getElementById("manual").hidden = false;
+  }, 2500);
+
+  window.location.replace("http://127.0.0.1:8781/tiktok/callback" + q);
+})();
+</script>
+
+</body>
+</html>
