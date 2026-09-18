@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Publisher — MassClassMedia</title>
+<meta name="description" content="How the MassClassMedia publishing tool moves finished clips into our own social media accounts.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#b3121b">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/assets/icon-192.png" alt="MassClassMedia logo"> MassClassMedia</a>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/channels/">Channels</a>
+      <a href="/publisher/" aria-current="page">Publisher</a>
+      <a href="/privacy-policy/">Privacy</a>
+      <a href="/terms-of-service/">Terms</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+<h1>The MassClassMedia publisher</h1>
+<p class="lede">An internal tool that moves finished clips from our production machine into our own
+social media accounts. One operator, our accounts only.</p>
+
+<div class="note">
+  <strong>Not a public product.</strong> There are no sign-ups, no customers and no third-party
+  accounts. The only accounts that authorize the publisher are the MassClassMedia channels listed on
+  the <a href="/channels/">Channels</a> page.
+</div>
+
+<h2>What it does</h2>
+<p>Once a clip has been rendered and approved, the publisher delivers it to each platform. Depending
+on the platform and the clip, that means one of two things:</p>
+<ul>
+  <li><strong>Upload as a draft.</strong> The clip lands in the account's own inbox inside the
+      platform's app, where a person finishes the post by hand.</li>
+  <li><strong>Direct post from the posting screen.</strong> A person opens the publisher's posting
+      screen, chooses the audience and settings for that clip, and confirms. The publisher then
+      posts it to that account.</li>
+</ul>
+<p>Either way, a human makes the final call on every post. The publisher never posts on its own.</p>
+
+<h2>How a post works, step by step</h2>
+<ol class="steps">
+  <li><strong>Sign in once.</strong> The operator signs into one of our own accounts through the
+      platform's official login. The publisher records which account authorized it so clips can never
+      go to the wrong channel.</li>
+  <li><strong>Pick a clip.</strong> Approved clips appear in a queue with their title and caption.</li>
+  <li><strong>Choose the settings.</strong> On the posting screen the operator selects who can see the
+      post, whether comments, duets and stitches are allowed, and whether the post contains any
+      commercial content. Nothing is pre-selected. The Post button stays disabled until every
+      required choice has been made.</li>
+  <li><strong>Confirm.</strong> The operator presses Post. The clip is transferred to the platform
+      and the result is shown on screen.</li>
+</ol>
+
+<h2>TikTok integration</h2>
+<p>On TikTok the publisher is built on TikTok for Developers, using these products and permissions:</p>
+<table>
+  <tr><th>Product / scope</th><th>What it is used for</th></tr>
+  <tr><td>Login Kit<br><code>user.info.basic</code>, <code>user.info.profile</code></td>
+      <td>Sign in to one of our own accounts and read its ID and display name, so the publisher can
+          confirm which of our channels it is connected to.</td></tr>
+  <tr><td>Content Posting API<br><code>video.upload</code></td>
+      <td>Upload a clip to that account's inbox as a draft, for a person to finish in the TikTok app.</td></tr>
+  <tr><td>Content Posting API<br><code>video.publish</code></td>
+      <td>Post a clip directly from the posting screen, after a person has chosen the audience and
+          interaction settings for that post.</td></tr>
+</table>
+<p>The posting screen follows TikTok's content-sharing guidelines: the privacy level is loaded from the
+account's own settings with no default, comment/duet/stitch are off until turned on and greyed out
+where the account disallows them, commercial content must be declared before posting, and the music
+usage confirmation is shown before the Post button becomes active.</p>
+
+<h2>What it stores</h2>
+<p>Only what it needs to act on our own accounts: an account identifier, the account's display name,
+and the access tokens the platform issues. All of it stays in files on the operator's own computer.
+There is no MassClassMedia server and no database. Full details are in the
+<a href="/privacy-policy/">Privacy Policy</a>.</p>
+
+<h2>Where it runs</h2>
+<p>The publisher runs on a single production computer. This website exists to host the tool's public
+identity: its name, logo, privacy policy, terms of service and the sign-in return page that hands an
+authorization back to the tool.</p>
+
+<h2>Contact</h2>
+<p>Questions about the publisher: <a href="mailto:massclassmedia@gmail.com">massclassmedia@gmail.com</a></p>
+
+</div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <span><img src="/assets/icon-64.png" alt="">MassClassMedia</span>
+    <a href="/privacy-policy/">Privacy Policy</a>
+    <a href="/terms-of-service/">Terms of Service</a>
+    <span class="spacer"></span>
+    <a href="mailto:massclassmedia@gmail.com">massclassmedia@gmail.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
